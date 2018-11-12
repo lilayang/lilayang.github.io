@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="image edge detection">
+<meta property="og:url" content="http://yoursite.com/2018/11/07/image-edge-detection/index.html">
+<meta property="og:site_name" content="lila">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/11/07/image-edge-detection/CRV_7_01.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/07/image-edge-detection/CRV_7_02.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/07/image-edge-detection/CRV_7_03.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/07/image-edge-detection/CRV_7_04.png">
+<meta property="og:updated_time" content="2018-11-07T19:40:28.559Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="image edge detection">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/07/image-edge-detection/CRV_7_01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/07/image-edge-detection/"/>
+
+
+
+
+
+  <title>image edge detection | lila</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lila</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Automation and Control Engineering</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/image-edge-detection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lila">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">image edge detection</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-07T20:35:41+01:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line">%% CRV_07_EdgeDetection</span><br><span class="line">% name : Shuting Yang</span><br><span class="line">% student number : 3056393</span><br><span class="line"></span><br><span class="line">%% clean up</span><br><span class="line">clear all;</span><br><span class="line">close all;</span><br><span class="line">clc;</span><br><span class="line"></span><br><span class="line">%% Gray-scale image</span><br><span class="line">Cameraman = imread(&apos;cameraman.tif&apos;);</span><br><span class="line">Cameraman = medfilt2(Cameraman);</span><br><span class="line">Cameraman2=Cameraman/255;</span><br><span class="line"></span><br><span class="line">%% SimpleDerivation</span><br><span class="line">fopgrx = -1:1;</span><br><span class="line">fopgry =fopgrx&apos;;</span><br><span class="line">Grxim=myCorrelation(Cameraman2,fopgrx);</span><br><span class="line">Gryim=myCorrelation(Cameraman2,fopgry);</span><br><span class="line">% Grxim=double(imfilter(Cameraman2,fopgrx));</span><br><span class="line">% Gryim=double(imfilter(Cameraman2,fopgry));</span><br><span class="line">MoGxy=sqrt(Grxim.^2+Gryim.^2);</span><br><span class="line">v1=0.5;</span><br><span class="line">[row1 col1]=size(MoGxy);</span><br><span class="line">for i=1:row1</span><br><span class="line">    for j=1:col1</span><br><span class="line">        if MoGxy(i,j)&gt;v1</span><br><span class="line">           fimedge1(i,j)=1;</span><br><span class="line">        else</span><br><span class="line">           fimedge1(i,j)=0;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">v2=1.5;</span><br><span class="line">for i=1:row1</span><br><span class="line">    for j=1:col1</span><br><span class="line">        if MoGxy(i,j)&gt;v2</span><br><span class="line">           fimedge2(i,j)=1;</span><br><span class="line">        else</span><br><span class="line">           fimedge2(i,j)=0;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">figure;</span><br><span class="line">subplot(2,3,1);</span><br><span class="line">imshow(Cameraman);</span><br><span class="line">title (&apos;original&apos;);</span><br><span class="line">subplot(2,3,2);</span><br><span class="line">imshow(Grxim);</span><br><span class="line">title (&apos;Grxim&apos;);</span><br><span class="line">subplot(2,3,3);</span><br><span class="line">imshow(Gryim);</span><br><span class="line">title (&apos;Gryim&apos;);</span><br><span class="line">subplot(2,3,4);</span><br><span class="line">imshow(MoGxy);</span><br><span class="line">title (&apos;MoGxy&apos;);</span><br><span class="line">subplot(2,3,5);</span><br><span class="line">imshow(fimedge1);</span><br><span class="line">title (&apos;threshold=0.5&apos;);</span><br><span class="line">subplot(2,3,6);</span><br><span class="line">imshow(fimedge2);</span><br><span class="line">title (&apos;threshold=1.5&apos;);</span><br><span class="line">%% Prewitt</span><br><span class="line">prewitt=[-1 0 1;-1 0 1;-1 0 1];</span><br><span class="line">prewittxim=double(imfilter(Cameraman2,prewitt));</span><br><span class="line">prewittyim=double(imfilter(Cameraman2,prewitt&apos;));</span><br><span class="line">Moprewitt=sqrt(prewittxim.^2+prewittyim.^2);</span><br><span class="line">v1=0.5;</span><br><span class="line">[row2 col2]=size(Moprewitt);</span><br><span class="line">for i=1:row2</span><br><span class="line">    for j=1:col2</span><br><span class="line">        if Moprewitt(i,j)&gt;v1</span><br><span class="line">           fimedge3(i,j)=1;</span><br><span class="line">        else</span><br><span class="line">           fimedge3(i,j)=0;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">v2=1.5;</span><br><span class="line">for i=1:row2</span><br><span class="line">    for j=1:col2</span><br><span class="line">        if Moprewitt(i,j)&gt;v2</span><br><span class="line">           fimedge4(i,j)=1;</span><br><span class="line">        else</span><br><span class="line">           fimedge4(i,j)=0;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">figure;</span><br><span class="line">subplot(2,3,1);</span><br><span class="line">imshow(Cameraman);</span><br><span class="line">title (&apos;original&apos;);</span><br><span class="line">subplot(2,3,2);</span><br><span class="line">imshow(prewittxim);</span><br><span class="line">title (&apos;prewittxim&apos;);</span><br><span class="line">subplot(2,3,3);</span><br><span class="line">imshow(prewittyim);</span><br><span class="line">title (&apos;prewittyim&apos;);</span><br><span class="line">subplot(2,3,4);</span><br><span class="line">imshow(Moprewitt);</span><br><span class="line">title (&apos;Moprewitt&apos;);</span><br><span class="line">subplot(2,3,5);</span><br><span class="line">imshow(fimedge3);</span><br><span class="line">title (&apos;threshold=0.5&apos;);</span><br><span class="line">subplot(2,3,6);</span><br><span class="line">imshow(fimedge4);</span><br><span class="line">title (&apos;threshold=1.5&apos;);</span><br><span class="line">%% Sobel</span><br><span class="line">Sobel=[-1 0 1;-2 0 2;-1 0 1];</span><br><span class="line">Sobelxim=double(imfilter(Cameraman2,Sobel));</span><br><span class="line">Sobelyim=double(imfilter(Cameraman2,Sobel&apos;));</span><br><span class="line">MoSobel=sqrt(Sobelxim.^2+Sobelyim.^2);</span><br><span class="line">v1=0.5;</span><br><span class="line">[row3 col3]=size(MoSobel);</span><br><span class="line">for i=1:row3</span><br><span class="line">    for j=1:col3</span><br><span class="line">        if MoSobel(i,j)&gt;v1</span><br><span class="line">           fimedge5(i,j)=1;</span><br><span class="line">        else</span><br><span class="line">           fimedge5(i,j)=0;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">v3=1.2;</span><br><span class="line">for i=1:row3</span><br><span class="line">    for j=1:col3</span><br><span class="line">        if MoSobel(i,j)&gt;v3</span><br><span class="line">           fimedge6(i,j)=1;</span><br><span class="line">        else</span><br><span class="line">           fimedge6(i,j)=0;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">figure;</span><br><span class="line">subplot(2,3,1);</span><br><span class="line">imshow(Cameraman);</span><br><span class="line">title (&apos;original&apos;);</span><br><span class="line">subplot(2,3,2);</span><br><span class="line">imshow(Sobelxim);</span><br><span class="line">title (&apos;Sobelxim&apos;);</span><br><span class="line">subplot(2,3,3);</span><br><span class="line">imshow(Sobelyim);</span><br><span class="line">title (&apos;Sobelyim&apos;);</span><br><span class="line">subplot(2,3,4);</span><br><span class="line">imshow(MoSobel);</span><br><span class="line">title (&apos;MoSobel&apos;);</span><br><span class="line">subplot(2,3,5);</span><br><span class="line">imshow(fimedge5);</span><br><span class="line">title (&apos;threshold=0.5&apos;);</span><br><span class="line">subplot(2,3,6);</span><br><span class="line">imshow(fimedge6);</span><br><span class="line">title (&apos;threshold=1.2&apos;);</span><br><span class="line">%% edge</span><br><span class="line">figure;</span><br><span class="line">subplot(2,2,1);</span><br><span class="line">imshow(Cameraman);</span><br><span class="line">title(&apos;original&apos;);</span><br><span class="line">BWPrewitt = edge(Cameraman,&apos;Prewitt&apos;);</span><br><span class="line">subplot(2,2,2);</span><br><span class="line">imshow(BWPrewitt);</span><br><span class="line">title(&apos;Prewitt&apos;);</span><br><span class="line">BWSobel = edge(Cameraman,&apos;Sobel&apos;);</span><br><span class="line">subplot(2,2,3);</span><br><span class="line">imshow(BWSobel);</span><br><span class="line">title(&apos;Sobel&apos;);</span><br><span class="line">BWCanny = edge(Cameraman,&apos;Canny&apos;);</span><br><span class="line">subplot(2,2,4);</span><br><span class="line">imshow(BWCanny);    </span><br><span class="line">title(&apos;Canny&apos;);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="matlab-show"><a href="#matlab-show" class="headerlink" title="matlab show"></a>matlab show</h4><p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”&gt;<html><head><br>      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><br>   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>CRV_07_EdgeDetection</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-11-07"><meta name="DC.source" content="CRV_7.m"><style type="text/css"><br>html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:’’;content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}</p>
+<p>html { min-height:100%; margin-bottom:1px; }<br>html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }<br>html body td { vertical-align:top; text-align:left; }</p>
+<p>h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }<br>h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }<br>h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }</p>
+<p>a { color:#005fce; text-decoration:none; }<br>a:hover { color:#005fce; text-decoration:underline; }<br>a:visited { color:#004aa0; text-decoration:none; }</p>
+<p>p { padding:0px; margin:0px 0px 20px; }<br>img { padding:0px; margin:0px 0px 20px; border:none; }<br>p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } </p>
+<p>ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }<br>ul li { padding:0px; margin:0px 0px 7px 0px; }<br>ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }<br>ul li ol li { list-style:decimal; }<br>ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }<br>ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }<br>ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }<br>ol li ol li { list-style-type:lower-alpha; }<br>ol li ul { padding-top:7px; }<br>ol li ul li { list-style:square; }</p>
+<p>.content { font-size:1.2em; line-height:140%; padding: 20px; }</p>
+<p>pre, code { font-size:12px; }<br>tt { font-size: 1.2em; }<br>pre { margin:0px 0px 20px; }<br>pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }<br>pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }<br>pre.error { color:red; }</p>
+<p>@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }</p>
+<p>span.keyword { color:#0000FF }<br>span.comment { color:#228B22 }<br>span.string { color:#A020F0 }<br>span.untermstring { color:#B20000 }<br>span.syscmd { color:#B28C00 }</p>
+<p>.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }<br>.footer p { margin:0px; }<br>.footer a { color:#878787; }<br>.footer a:hover { color:#878787; text-decoration:underline; }<br>.footer a:visited { color:#878787; }</p>
+<p>table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }<br>table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }</p>
+<p>  </style></head><body><div class="content"><h1>CRV_07_EdgeDetection</h1><!--introduction--><p>name : Shuting Yang student number : 3056393</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">clean up</a></li><li><a href="#2">Gray-scale image</a></li><li><a href="#3">SimpleDerivation</a></li><li><a href="#4">Prewitt</a></li><li><a href="#5">Sobel</a></li><li><a href="#6">edge</a></li></ul></div><h2 id="1">clean up</h2><pre class="codeinput">clear <span class="string">all</span>;<br>close <span class="string">all</span>;<br>clc;<br></pre><h2 id="2">Gray-scale image</h2><pre class="codeinput">Cameraman = imread(<span class="string">‘cameraman.tif’</span>);<br>Cameraman = medfilt2(Cameraman);<br>Cameraman2=Cameraman/255;<br></pre><h2 id="3">SimpleDerivation</h2><pre class="codeinput">fopgrx = -1:1;<br>fopgry =fopgrx’;<br>Grxim=myCorrelation(Cameraman2,fopgrx);<br>Gryim=myCorrelation(Cameraman2,fopgry);<br><span class="comment">% Grxim=double(imfilter(Cameraman2,fopgrx));</span><br><span class="comment">% Gryim=double(imfilter(Cameraman2,fopgry));</span><br>MoGxy=sqrt(Grxim.^2+Gryim.^2);<br>v1=0.5;<br>[row1 col1]=size(MoGxy);<br><span class="keyword">for</span> i=1:row1<br>    <span class="keyword">for</span> j=1:col1<br>        <span class="keyword">if</span> MoGxy(i,j)&gt;v1<br>           fimedge1(i,j)=1;<br>        <span class="keyword">else</span><br>           fimedge1(i,j)=0;<br>        <span class="keyword">end</span><br>    <span class="keyword">end</span><br><span class="keyword">end</span><br>v2=1.5;<br><span class="keyword">for</span> i=1:row1<br>    <span class="keyword">for</span> j=1:col1<br>        <span class="keyword">if</span> MoGxy(i,j)&gt;v2<br>           fimedge2(i,j)=1;<br>        <span class="keyword">else</span><br>           fimedge2(i,j)=0;<br>        <span class="keyword">end</span><br>    <span class="keyword">end</span><br><span class="keyword">end</span><br>figure;<br>subplot(2,3,1);<br>imshow(Cameraman);<br>title (<span class="string">‘original’</span>);<br>subplot(2,3,2);<br>imshow(Grxim);<br>title (<span class="string">‘Grxim’</span>);<br>subplot(2,3,3);<br>imshow(Gryim);<br>title (<span class="string">‘Gryim’</span>);<br>subplot(2,3,4);<br>imshow(MoGxy);<br>title (<span class="string">‘MoGxy’</span>);<br>subplot(2,3,5);<br>imshow(fimedge1);<br>title (<span class="string">‘threshold=0.5’</span>);<br>subplot(2,3,6);<br>imshow(fimedge2);<br>title (<span class="string">‘threshold=1.5’</span>);<br></pre><img vspace="5" hspace="5" src="CRV_7_01.png" alt=""> <h2 id="4">Prewitt</h2><pre class="codeinput">prewitt=[-1 0 1;-1 0 1;-1 0 1];<br>prewittxim=double(imfilter(Cameraman2,prewitt));<br>prewittyim=double(imfilter(Cameraman2,prewitt’));<br>Moprewitt=sqrt(prewittxim.^2+prewittyim.^2);<br>v1=0.5;<br>[row2 col2]=size(Moprewitt);<br><span class="keyword">for</span> i=1:row2<br>    <span class="keyword">for</span> j=1:col2<br>        <span class="keyword">if</span> Moprewitt(i,j)&gt;v1<br>           fimedge3(i,j)=1;<br>        <span class="keyword">else</span><br>           fimedge3(i,j)=0;<br>        <span class="keyword">end</span><br>    <span class="keyword">end</span><br><span class="keyword">end</span><br>v2=1.5;<br><span class="keyword">for</span> i=1:row2<br>    <span class="keyword">for</span> j=1:col2<br>        <span class="keyword">if</span> Moprewitt(i,j)&gt;v2<br>           fimedge4(i,j)=1;<br>        <span class="keyword">else</span><br>           fimedge4(i,j)=0;<br>        <span class="keyword">end</span><br>    <span class="keyword">end</span><br><span class="keyword">end</span><br>figure;<br>subplot(2,3,1);<br>imshow(Cameraman);<br>title (<span class="string">‘original’</span>);<br>subplot(2,3,2);<br>imshow(prewittxim);<br>title (<span class="string">‘prewittxim’</span>);<br>subplot(2,3,3);<br>imshow(prewittyim);<br>title (<span class="string">‘prewittyim’</span>);<br>subplot(2,3,4);<br>imshow(Moprewitt);<br>title (<span class="string">‘Moprewitt’</span>);<br>subplot(2,3,5);<br>imshow(fimedge3);<br>title (<span class="string">‘threshold=0.5’</span>);<br>subplot(2,3,6);<br>imshow(fimedge4);<br>title (<span class="string">‘threshold=1.5’</span>);<br></pre><img vspace="5" hspace="5" src="CRV_7_02.png" alt=""> <h2 id="5">Sobel</h2><pre class="codeinput">Sobel=[-1 0 1;-2 0 2;-1 0 1];<br>Sobelxim=double(imfilter(Cameraman2,Sobel));<br>Sobelyim=double(imfilter(Cameraman2,Sobel’));<br>MoSobel=sqrt(Sobelxim.^2+Sobelyim.^2);<br>v1=0.5;<br>[row3 col3]=size(MoSobel);<br><span class="keyword">for</span> i=1:row3<br>    <span class="keyword">for</span> j=1:col3<br>        <span class="keyword">if</span> MoSobel(i,j)&gt;v1<br>           fimedge5(i,j)=1;<br>        <span class="keyword">else</span><br>           fimedge5(i,j)=0;<br>        <span class="keyword">end</span><br>    <span class="keyword">end</span><br><span class="keyword">end</span><br>v3=1.2;<br><span class="keyword">for</span> i=1:row3<br>    <span class="keyword">for</span> j=1:col3<br>        <span class="keyword">if</span> MoSobel(i,j)&gt;v3<br>           fimedge6(i,j)=1;<br>        <span class="keyword">else</span><br>           fimedge6(i,j)=0;<br>        <span class="keyword">end</span><br>    <span class="keyword">end</span><br><span class="keyword">end</span><br>figure;<br>subplot(2,3,1);<br>imshow(Cameraman);<br>title (<span class="string">‘original’</span>);<br>subplot(2,3,2);<br>imshow(Sobelxim);<br>title (<span class="string">‘Sobelxim’</span>);<br>subplot(2,3,3);<br>imshow(Sobelyim);<br>title (<span class="string">‘Sobelyim’</span>);<br>subplot(2,3,4);<br>imshow(MoSobel);<br>title (<span class="string">‘MoSobel’</span>);<br>subplot(2,3,5);<br>imshow(fimedge5);<br>title (<span class="string">‘threshold=0.5’</span>);<br>subplot(2,3,6);<br>imshow(fimedge6);<br>title (<span class="string">‘threshold=1.2’</span>);<br></pre><img vspace="5" hspace="5" src="CRV_7_03.png" alt=""> <h2 id="6">edge</h2><pre class="codeinput">figure;<br>subplot(2,2,1);<br>imshow(Cameraman);<br>title(<span class="string">‘original’</span>);<br>BWPrewitt = edge(Cameraman,<span class="string">‘Prewitt’</span>);<br>subplot(2,2,2);<br>imshow(BWPrewitt);<br>title(<span class="string">‘Prewitt’</span>);<br>BWSobel = edge(Cameraman,<span class="string">‘Sobel’</span>);<br>subplot(2,2,3);<br>imshow(BWSobel);<br>title(<span class="string">‘Sobel’</span>);<br>BWCanny = edge(Cameraman,<span class="string">‘Canny’</span>);<br>subplot(2,2,4);<br>imshow(BWCanny);<br>title(<span class="string">‘Canny’</span>);<br></pre><img vspace="5" hspace="5" src="CRV_7_04.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/" target="_blank" rel="noopener">Published with MATLAB® R2018a</a><br></p></div>&lt;!–</body></html></p>
+<h5 id="SOURCE-BEGIN"><a href="#SOURCE-BEGIN" class="headerlink" title="SOURCE BEGIN"></a>SOURCE BEGIN</h5><p>%% CRV_07_EdgeDetection<br>% name : Shuting Yang<br>% student number : 3056393</p>
+<p>%% clean up<br>clear all;<br>close all;<br>clc;</p>
+<p>%% Gray-scale image<br>Cameraman = imread(‘cameraman.tif’);<br>Cameraman = medfilt2(Cameraman);<br>Cameraman2=Cameraman/255;</p>
+<p>%% SimpleDerivation<br>fopgrx = -1:1;<br>fopgry =fopgrx’;<br>Grxim=myCorrelation(Cameraman2,fopgrx);<br>Gryim=myCorrelation(Cameraman2,fopgry);<br>% Grxim=double(imfilter(Cameraman2,fopgrx));<br>% Gryim=double(imfilter(Cameraman2,fopgry));<br>MoGxy=sqrt(Grxim.^2+Gryim.^2);<br>v1=0.5;<br>[row1 col1]=size(MoGxy);<br>for i=1:row1<br>    for j=1:col1<br>        if MoGxy(i,j)&gt;v1<br>           fimedge1(i,j)=1;<br>        else<br>           fimedge1(i,j)=0;<br>        end<br>    end<br>end<br>v2=1.5;<br>for i=1:row1<br>    for j=1:col1<br>        if MoGxy(i,j)&gt;v2<br>           fimedge2(i,j)=1;<br>        else<br>           fimedge2(i,j)=0;<br>        end<br>    end<br>end<br>figure;<br>subplot(2,3,1);<br>imshow(Cameraman);<br>title (‘original’);<br>subplot(2,3,2);<br>imshow(Grxim);<br>title (‘Grxim’);<br>subplot(2,3,3);<br>imshow(Gryim);<br>title (‘Gryim’);<br>subplot(2,3,4);<br>imshow(MoGxy);<br>title (‘MoGxy’);<br>subplot(2,3,5);<br>imshow(fimedge1);<br>title (‘threshold=0.5’);<br>subplot(2,3,6);<br>imshow(fimedge2);<br>title (‘threshold=1.5’);<br>%% Prewitt<br>prewitt=[-1 0 1;-1 0 1;-1 0 1];<br>prewittxim=double(imfilter(Cameraman2,prewitt));<br>prewittyim=double(imfilter(Cameraman2,prewitt’));<br>Moprewitt=sqrt(prewittxim.^2+prewittyim.^2);<br>v1=0.5;<br>[row2 col2]=size(Moprewitt);<br>for i=1:row2<br>    for j=1:col2<br>        if Moprewitt(i,j)&gt;v1<br>           fimedge3(i,j)=1;<br>        else<br>           fimedge3(i,j)=0;<br>        end<br>    end<br>end<br>v2=1.5;<br>for i=1:row2<br>    for j=1:col2<br>        if Moprewitt(i,j)&gt;v2<br>           fimedge4(i,j)=1;<br>        else<br>           fimedge4(i,j)=0;<br>        end<br>    end<br>end<br>figure;<br>subplot(2,3,1);<br>imshow(Cameraman);<br>title (‘original’);<br>subplot(2,3,2);<br>imshow(prewittxim);<br>title (‘prewittxim’);<br>subplot(2,3,3);<br>imshow(prewittyim);<br>title (‘prewittyim’);<br>subplot(2,3,4);<br>imshow(Moprewitt);<br>title (‘Moprewitt’);<br>subplot(2,3,5);<br>imshow(fimedge3);<br>title (‘threshold=0.5’);<br>subplot(2,3,6);<br>imshow(fimedge4);<br>title (‘threshold=1.5’);<br>%% Sobel<br>Sobel=[-1 0 1;-2 0 2;-1 0 1];<br>Sobelxim=double(imfilter(Cameraman2,Sobel));<br>Sobelyim=double(imfilter(Cameraman2,Sobel’));<br>MoSobel=sqrt(Sobelxim.^2+Sobelyim.^2);<br>v1=0.5;<br>[row3 col3]=size(MoSobel);<br>for i=1:row3<br>    for j=1:col3<br>        if MoSobel(i,j)&gt;v1<br>           fimedge5(i,j)=1;<br>        else<br>           fimedge5(i,j)=0;<br>        end<br>    end<br>end<br>v3=1.2;<br>for i=1:row3<br>    for j=1:col3<br>        if MoSobel(i,j)&gt;v3<br>           fimedge6(i,j)=1;<br>        else<br>           fimedge6(i,j)=0;<br>        end<br>    end<br>end<br>figure;<br>subplot(2,3,1);<br>imshow(Cameraman);<br>title (‘original’);<br>subplot(2,3,2);<br>imshow(Sobelxim);<br>title (‘Sobelxim’);<br>subplot(2,3,3);<br>imshow(Sobelyim);<br>title (‘Sobelyim’);<br>subplot(2,3,4);<br>imshow(MoSobel);<br>title (‘MoSobel’);<br>subplot(2,3,5);<br>imshow(fimedge5);<br>title (‘threshold=0.5’);<br>subplot(2,3,6);<br>imshow(fimedge6);<br>title (‘threshold=1.2’);<br>%% edge<br>figure;<br>subplot(2,2,1);<br>imshow(Cameraman);<br>title(‘original’);<br>BWPrewitt = edge(Cameraman,’Prewitt’);<br>subplot(2,2,2);<br>imshow(BWPrewitt);<br>title(‘Prewitt’);<br>BWSobel = edge(Cameraman,’Sobel’);<br>subplot(2,2,3);<br>imshow(BWSobel);<br>title(‘Sobel’);<br>BWCanny = edge(Cameraman,’Canny’);<br>subplot(2,2,4);<br>imshow(BWCanny);<br>title(‘Canny’);</p>
+<h5 id="SOURCE-END"><a href="#SOURCE-END" class="headerlink" title="SOURCE END"></a>SOURCE END</h5><p>–&gt;</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/07/Understanding-for-Interview/" rel="next" title="Understanding for Interview">
+                <i class="fa fa-chevron-left"></i> Understanding for Interview
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">yang</p>
+              <p class="site-description motion-element" itemprop="description">Fehlerdiagnose und Fehlertoleranz in technischen Systemen</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#matlab-show"><span class="nav-number">1.</span> <span class="nav-text">matlab show</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">CRV_07_EdgeDetection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">Contents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number"></span> <span class="nav-text">clean up</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number"></span> <span class="nav-text">Gray-scale image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number"></span> <span class="nav-text">SimpleDerivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-number"></span> <span class="nav-text">Prewitt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5"><span class="nav-number"></span> <span class="nav-text">Sobel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6"><span class="nav-number"></span> <span class="nav-text">edge</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#SOURCE-BEGIN"><span class="nav-number">0.1.</span> <span class="nav-text">SOURCE BEGIN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SOURCE-END"><span class="nav-number">0.2.</span> <span class="nav-text">SOURCE END</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
