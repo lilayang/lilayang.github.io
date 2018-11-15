@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-15T10:29:45.845Z</updated>
+  <updated>2018-11-15T10:36:36.532Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/11/15/PCA/"/>
     <id>http://yoursite.com/2018/11/15/PCA/</id>
     <published>2018-11-15T10:15:06.000Z</published>
-    <updated>2018-11-15T10:29:45.845Z</updated>
+    <updated>2018-11-15T10:36:36.532Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://www.youtube.com/watch?v=_UVHneBUBW0" target="_blank" rel="noopener">https://www.youtube.com/watch?v=_UVHneBUBW0</a></p><p><a href="https://www.youtube.com/watch?v=FgakZw6K1QQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=FgakZw6K1QQ</a></p><h3 id="2D"><a href="#2D" class="headerlink" title="2D"></a>2D</h3><p>先通过x,y的平均值找出所有点的中心点，再将此平均值移到原点。<br>再画一条经过原点的线，旋转，直到所有点到这条线的距离的平方和最短，也就是点映射到线上的点到原点的距离最长。记为sum of the squard distance(SS1),这条线即为PC1。<br>垂直于PC1有条线为PC2。(SS2)<br>variation(PC1)=SS1/(n-1);<br>variation(PC2)=SS2/(n-1);<br>weighting(PC1)=variation(PC1)/(variation(PC1)+variation(PC2));<br>weighting(PC2)=variation(PC2)/(variation(PC1)+variation(PC2));</p><p>###3D<br>当weighting(PC1)+weighting(PC2)&gt;90%,<br>可以忽略PC3<br>–&gt; 降维</p>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://www.youtube.com/watch?v=_UVHneBUBW0" target="_blank" rel="noopener">https://www.youtube.com/watch?v=_UVHneBUBW0</a></p><p><a href="https://www.youtube.com/watch?v=FgakZw6K1QQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=FgakZw6K1QQ</a></p><h3 id="2D"><a href="#2D" class="headerlink" title="2D"></a>2D</h3><p>先通过x,y的平均值找出所有点的中心点，再将此平均值移到原点。</p><p>再画一条经过原点的线，旋转，直到所有点到这条线的距离的平方和最短，也就是点映射到线上的点到原点的距离最长。记为sum of the squard distance(SS1),这条线即为PC1。</p><p>垂直于PC1有条线为PC2。(SS2)</p><p>variation(PC1)=SS1/(n-1);<br>variation(PC2)=SS2/(n-1);<br>weighting(PC1)=variation(PC1)/(variation(PC1)+variation(PC2));<br>weighting(PC2)=variation(PC2)/(variation(PC1)+variation(PC2));</p><h3 id="3D"><a href="#3D" class="headerlink" title="3D"></a>3D</h3><p>当weighting(PC1)+weighting(PC2)&gt;90%,</p><p>可以忽略PC3</p><p>–&gt; 降维</p>]]></content>
     
     <summary type="html">
     
