@@ -257,6 +257,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/PCA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lila">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/15/PCA/" itemprop="url">PCA</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-15T11:15:06+01:00">
+                2018-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/State-and-Parameter-Estimation/" itemprop="url" rel="index">
+                    <span itemprop="name">State and Parameter Estimation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.youtube.com/watch?v=_UVHneBUBW0" target="_blank" rel="noopener">https://www.youtube.com/watch?v=_UVHneBUBW0</a></p>
+<p><a href="https://www.youtube.com/watch?v=FgakZw6K1QQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=FgakZw6K1QQ</a></p>
+<h3 id="2D"><a href="#2D" class="headerlink" title="2D"></a>2D</h3><p>先通过x,y的平均值找出所有点的中心点，再将此平均值移到原点。<br>再画一条经过原点的线，旋转，直到所有点到这条线的距离的平方和最短，也就是点映射到线上的点到原点的距离最长。记为sum of the squard distance(SS1),这条线即为PC1。<br>垂直于PC1有条线为PC2。(SS2)<br>variation(PC1)=SS1/(n-1);<br>variation(PC2)=SS2/(n-1);<br>weighting(PC1)=variation(PC1)/(variation(PC1)+variation(PC2));<br>weighting(PC2)=variation(PC2)/(variation(PC1)+variation(PC2));</p>
+<p>###3D<br>当weighting(PC1)+weighting(PC2)&gt;90%,<br>可以忽略PC3<br>–&gt; 降维</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/Hough-Transform/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1038,7 +1183,7 @@ To make changes, update the MATLAB code and republish this document.
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1049,12 +1194,21 @@ To make changes, update the MATLAB code and republish this document.
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>

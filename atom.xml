@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-14T17:26:48.087Z</updated>
+  <updated>2018-11-15T10:29:45.845Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PCA</title>
+    <link href="http://yoursite.com/2018/11/15/PCA/"/>
+    <id>http://yoursite.com/2018/11/15/PCA/</id>
+    <published>2018-11-15T10:15:06.000Z</published>
+    <updated>2018-11-15T10:29:45.845Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.youtube.com/watch?v=_UVHneBUBW0" target="_blank" rel="noopener">https://www.youtube.com/watch?v=_UVHneBUBW0</a></p><p><a href="https://www.youtube.com/watch?v=FgakZw6K1QQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=FgakZw6K1QQ</a></p><h3 id="2D"><a href="#2D" class="headerlink" title="2D"></a>2D</h3><p>先通过x,y的平均值找出所有点的中心点，再将此平均值移到原点。<br>再画一条经过原点的线，旋转，直到所有点到这条线的距离的平方和最短，也就是点映射到线上的点到原点的距离最长。记为sum of the squard distance(SS1),这条线即为PC1。<br>垂直于PC1有条线为PC2。(SS2)<br>variation(PC1)=SS1/(n-1);<br>variation(PC2)=SS2/(n-1);<br>weighting(PC1)=variation(PC1)/(variation(PC1)+variation(PC2));<br>weighting(PC2)=variation(PC2)/(variation(PC1)+variation(PC2));</p><p>###3D<br>当weighting(PC1)+weighting(PC2)&gt;90%,<br>可以忽略PC3<br>–&gt; 降维</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=_UVHneBUBW0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.youtube.com/watch?v=_UVHneBUBW0&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="State and Parameter Estimation" scheme="http://yoursite.com/categories/State-and-Parameter-Estimation/"/>
+    
+    
+      <category term="PCA" scheme="http://yoursite.com/tags/PCA/"/>
+    
+  </entry>
   
   <entry>
     <title>Hough Transform</title>
