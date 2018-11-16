@@ -357,15 +357,36 @@
     
 
     
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="https://wx1.sinaimg.cn/mw690/9a16087egy1fx8056ev4hj20by0bygmg.jpg" alt="yang wechat" style="width: 200px; max-width: 100%;">
-    <div>ex. subscribe to my blog by scanning my public wechat account</div>
-</div>
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="yang WeChat Pay">
+        <p>WeChat Pay</p>
       </div>
     
 
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="yang Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
